@@ -7,12 +7,13 @@
 //
 
 import UIKit
+import RealmSwift
 
 class PJListViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
     
     @IBOutlet var tableView: UITableView!
     
-    var projects:[Project] = [Project]()
+    var projects:Results<Project>!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,7 +57,7 @@ class PJListViewController: UIViewController,UITableViewDelegate,UITableViewData
         if (editingStyle == .delete){
             let deleteProject = projects[indexPath.row]
             //削除処理
-            DataAccessUserDefault.delete(deleteObj: deleteProject)
+            DataAccess.delete(deleteObj: deleteProject)
             //再読み込み
             reloadTableView()
         }else if(editingStyle == .insert){
@@ -85,7 +86,7 @@ class PJListViewController: UIViewController,UITableViewDelegate,UITableViewData
     }
     
     func reloadTableView(){
-        self.projects = DataAccessUserDefault.selectAll()
+        self.projects = DataAccess.selectAll()
         tableView.reloadData()
     }
     

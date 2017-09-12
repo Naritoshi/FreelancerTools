@@ -64,15 +64,13 @@ class PJEntryViewController: UIViewController, UIPickerViewDelegate,UIPickerView
             , upperTimeText: upperText.text
             , stateText: stateText.text
             , noteText: memoText.text)
-        DataAccessUserDefault.insert(insetObj: project)
         
-        let selectdata = DataAccessUserDefault.select(obj: project)
-        print(selectdata!)
+        DataAccess.insert(insetObj: project)
     }
     
     func updateProject(){
-        let ID = targetProjet?.ID
-        let project = Util.CleateProjectInstans(ID: ID!,nameText: nameText.text ?? ""
+        let id = targetProjet?.id
+        let project = Util.CleateProjectInstans(id: id!,nameText: nameText.text ?? ""
             , pgLangText: langText.text
             , placeText: placeText.text
             , priceText: priceText.text
@@ -81,10 +79,7 @@ class PJEntryViewController: UIViewController, UIPickerViewDelegate,UIPickerView
             , stateText: stateText.text
             , noteText: memoText.text)
         
-        DataAccessUserDefault.update(updateObj: project)
-        
-        let selectdata = DataAccessUserDefault.select(obj: project)
-        print(selectdata!)
+        DataAccess.update(updateObj: project)
     }
     
     //戻るボタン押下処理
@@ -97,13 +92,13 @@ class PJEntryViewController: UIViewController, UIPickerViewDelegate,UIPickerView
         nameText.text = targetProjet?.name
         langText.text = targetProjet?.pgLang
         placeText.text = targetProjet?.place
-        if let price = targetProjet?.price{
+        if let price = targetProjet?.price.value{
             priceText.text = String(price)
         }
-        if let lower = targetProjet?.lowerTime{
+        if let lower = targetProjet?.lowerTime.value{
             lowerText.text = String(lower)
         }
-        if let upper = targetProjet?.upperTime{
+        if let upper = targetProjet?.upperTime.value{
             upperText.text = String(upper)
         }
         stateText.text = targetProjet?.state
