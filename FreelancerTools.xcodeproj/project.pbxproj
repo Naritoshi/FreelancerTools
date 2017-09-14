@@ -24,6 +24,7 @@
 		14438CCC1F617EF600568618 /* pjlistback.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 14438CCB1F617EF600568618 /* pjlistback.jpg */; };
 		146A1C321F6020B900DE1181 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146A1C311F6020B900DE1181 /* Util.swift */; };
 		146A1C341F60244F00DE1181 /* DataAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146A1C331F60244F00DE1181 /* DataAccess.swift */; };
+		14C977961F6AC13A00884556 /* ListViewBaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C977951F6AC13A00884556 /* ListViewBaseController.swift */; };
 		37A6BD2BEEC538EAC152AB1C /* Pods_FreelancerToolsUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E33A6A8CCD0DD36CB6DA9EF /* Pods_FreelancerToolsUITests.framework */; };
 		46C356F5618DB42A2EF7CBD9 /* Pods_FreelancerToolsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6ABC40127B8D4DB52A7B11D1 /* Pods_FreelancerToolsTests.framework */; };
 		EA72848BED2882FECEC0E21F /* Pods_FreelancerTools.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 137B96514D13C93927202B78 /* Pods_FreelancerTools.framework */; };
@@ -72,6 +73,7 @@
 		14438CCB1F617EF600568618 /* pjlistback.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = pjlistback.jpg; sourceTree = "<group>"; };
 		146A1C311F6020B900DE1181 /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		146A1C331F60244F00DE1181 /* DataAccess.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataAccess.swift; sourceTree = "<group>"; };
+		14C977951F6AC13A00884556 /* ListViewBaseController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewBaseController.swift; sourceTree = "<group>"; };
 		17C7343BC3FF8BDAA53AF39D /* Pods-FreelancerTools.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FreelancerTools.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FreelancerTools/Pods-FreelancerTools.debug.xcconfig"; sourceTree = "<group>"; };
 		6ABC40127B8D4DB52A7B11D1 /* Pods_FreelancerToolsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FreelancerToolsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E33A6A8CCD0DD36CB6DA9EF /* Pods_FreelancerToolsUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FreelancerToolsUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -147,6 +149,7 @@
 				140310C81F2E04A300955A7E /* Project.swift */,
 				140310C21F2DF03A00955A7E /* PJEntryViewController.swift */,
 				140310C41F2DF04D00955A7E /* PJListViewController.swift */,
+				14C977951F6AC13A00884556 /* ListViewBaseController.swift */,
 				1403108E1F2DDB2F00955A7E /* Main.storyboard */,
 				140310931F2DDB2F00955A7E /* LaunchScreen.storyboard */,
 				140310961F2DDB2F00955A7E /* Info.plist */,
@@ -489,6 +492,7 @@
 				1403108B1F2DDB2F00955A7E /* AppDelegate.swift in Sources */,
 				140310C91F2E04A300955A7E /* Project.swift in Sources */,
 				140310C51F2DF04D00955A7E /* PJListViewController.swift in Sources */,
+				14C977961F6AC13A00884556 /* ListViewBaseController.swift in Sources */,
 				140310C31F2DF03A00955A7E /* PJEntryViewController.swift in Sources */,
 				146A1C341F60244F00DE1181 /* DataAccess.swift in Sources */,
 			);

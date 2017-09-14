@@ -13,6 +13,7 @@ class PJEntryViewController: UIViewController, UIPickerViewDelegate,UIPickerView
     enum mode:Int {
         case insert
         case update
+        case seach
     }
     var entryMode:mode = .insert
     var targetProjet:Project? = nil
@@ -35,9 +36,14 @@ class PJEntryViewController: UIViewController, UIPickerViewDelegate,UIPickerView
         //状態のリストを初期化する
         pikerViewInit()
         
-        //updateモードの場合初期値をセットする
-        if entryMode == .update {
+        switch entryMode {
+        case .insert:
             navigationBar.topItem?.title = "案件更新"
+        case .update:
+            navigationBar.topItem?.title = "案件更新"
+            setProjcet()
+        case .seach:
+            navigationBar.topItem?.title = "検索画面"
             setProjcet()
         }
     }
@@ -45,10 +51,25 @@ class PJEntryViewController: UIViewController, UIPickerViewDelegate,UIPickerView
     //登録ボタン押下処理
     @IBAction func regstor(_ sender: Any) {
         //
-        if self.entryMode == .update {
-            updateProject()
-        }else{
+        switch entryMode {
+        case .insert:
             insertProject()
+        case .update:
+            updateProject()
+        case .seach:
+            let searchKey = Util.CleateProjectInstans(id: "", nameText: nameText.text ?? ""
+                , pgLangText: langText.text
+                , placeText: placeText.text
+                , priceText: priceText.text
+                , lowerTimeText: lowerText.text
+                , upperTimeText: upperText.text
+                , stateText: stateText.text
+                , noteText: memoText.text)
+            // このモーダルビューを表示しているビューコントローラー(=PJListViewController)
+            // これ自体はUIViewController型なので、PJListViewController型に強制ダウンキャストする
+            let pjListVc = presentingViewController as! PJListViewController
+            // テキストフィールドの内容をHomeViewController側に設定
+            pjListVc.searchKey = searchKey
         }
         
         //画面を戻す

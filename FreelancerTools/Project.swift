@@ -9,7 +9,7 @@
 import Foundation
 import RealmSwift
 
-class Project: Object,IKeyData{
+class Project: Object{
     dynamic public var id: String = ""
     dynamic public var name:String = ""
     dynamic public var pgLang:String?

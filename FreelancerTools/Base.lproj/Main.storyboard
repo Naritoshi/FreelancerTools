@@ -299,6 +299,13 @@
                                                 <action selector="back:" destination="Fa0-xJ-hff" id="dZB-QJ-2h6"/>
                                             </connections>
                                         </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" title="検索" id="n5E-Z7-ZJ9">
+                                            <connections>
+                                                <segue destination="Ucc-nt-cc7" kind="popoverPresentation" identifier="projectSeach" popoverAnchorBarButtonItem="n5E-Z7-ZJ9" id="ftn-oe-Ogt">
+                                                    <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                                </segue>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>

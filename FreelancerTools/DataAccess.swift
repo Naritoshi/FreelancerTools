@@ -10,86 +10,85 @@ import Foundation
 import RealmSwift
 
 protocol IDataAccess {
+    associatedtype object:Object
     /**
      指定したデータを登録する
      */
-    static func insert<T: IKeyData>(insetObj: T)
+    static func insert(insetObj: object)
     
     /**
      指定したKeyのデータを更新する
      */
-    static func update<T: IKeyData>(updateObj: T)
+    static func update(updateObj: object)
     
     /**
      指定したKeyのデータを削除する
      */
-    static func delete<T: IKeyData>(deleteObj: T)
+    static func delete(deleteObj: object)
     
     /**
-     指定したKeyのデータを取得する
+     プライマリーキーで取得する
      */
-    static func select<T: IKeyData>(obj: T)-> T?
+    static func selectByKey<K>(key:K)-> object?
     
     /**
-     全データ取得する
+     検索した結果を取得する
      */
-    static func selectAll<T: IKeyData>()-> Results<T>
+    static func select(predicate: NSPredicate?, orderKey:String)-> Results<object>
 }
 
-protocol IKeyData {
-    var id:String {get set}
-}
-
-class DataAccess:IDataAccess {
-    static func insert<T: IKeyData>(insetObj: T){
+class DataAccess<T: Object>:IDataAccess {
+    static func insert(insetObj: T){
         
         do {
             let realm = try Realm()
             try realm.write {
-                realm.add(insetObj as! Object)
+                realm.add(insetObj)
             }
         } catch {
             
         }
     }
     
-    static func update<T: IKeyData>(updateObj: T){
+    static func update(updateObj: T){
         do {
             let realm = try Realm()
             try realm.write {
-                realm.add(updateObj as! Object, update:true)
+                realm.add(updateObj , update:true)
             }
         } catch {
             
         }
     }
     
-    static func delete<T: IKeyData>(deleteObj: T){
+    static func delete(deleteObj: T){
         do {
             let realm = try Realm()
             try realm.write {
-                realm.delete(deleteObj as! Object)
+                realm.delete(deleteObj)
             }
         } catch {
             
         }
     }
     
-    static func select<T: IKeyData>(obj: T)-> T?{
+    static func selectByKey<K>(key: K) -> T? {
         do {
             let realm = try Realm()
-            let predicate = NSPredicate(format: "id = %@ ", obj.id)
-            if let data = realm.objects(type(of:(obj as! Object))).filter(predicate).first{
-                return data as? T
-            }
+            return realm.object(ofType: T.self, forPrimaryKey: key)
         } catch {
             
         }
         return nil
     }
     
-    static func selectAll<T: IKeyData>()-> Results<T>{
+    static func select(predicate: NSPredicate?, orderKey:String) -> Results<T> {
         let realm = try! Realm()
-        return realm.objects(T.self).sorted(byKeyPath: "id")
+        if let predicate = predicate {
+            return realm.objects(object.self).filter(predicate).sorted(byKeyPath: orderKey)
+        }else{
+            //全件
+            return realm.objects(object.self).sorted(byKeyPath: orderKey)
+        }
     }
 }
