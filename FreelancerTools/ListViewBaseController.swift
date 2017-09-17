@@ -11,7 +11,9 @@ import RealmSwift
 
 class ListViewBaseController<T: Object>: UIViewController,UITableViewDelegate,UITableViewDataSource {
 
-    var tableView: UITableView!
+    var tableView: UITableView = UITableView()
+    var backImageView:UIImageView?
+    var backImage: UIImage?
     
     //
     var cellIdentifier = "Cell"
@@ -24,8 +26,80 @@ class ListViewBaseController<T: Object>: UIViewController,UITableViewDelegate,UI
     var searchKey:T = T()
     var orderKey = "id"
     
+    /*
+     ナビゲーションバー
+     */
+    let entryTitle = "登録画面"
+    let updateTitle = "変更画面"
+    let searchTitle = "検索画面"
+    var titleText = ""
+    var navigationBar: UINavigationBar?
+    var backButton: UIButton?
+    var registorButton: UIButton?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = UIColor.white
+        
+        //テーブルビュー（ナビゲーションバーより先）
+        setTableVIew()
+        
+        /*　ナビゲーションバー　*/
+        navigationBar = UINavigationBar()
+        navigationBar?.frame = CGRect(x: 0, y: 20, width: self.view.frame.size.width, height: 44)
+        
+        self.view.backgroundColor = UIColor.white
+        self.view.addSubview(navigationBar!)
+        
+        let naviItem = UINavigationItem(title: titleText);
+        let backItem = UIBarButtonItem(title: "戻る", style: .done, target: nil, action: #selector(back))
+        let doneItem = UIBarButtonItem(title: "検索条件", style: .done, target: nil, action: #selector(search))
+        naviItem.leftBarButtonItem = backItem;
+        naviItem.rightBarButtonItem = doneItem;
+        navigationBar?.setItems([naviItem], animated: false);
+        
+        //背景を設定する
+        if let backImageData = backImage {
+            //画像設定
+            backImageView = UIImageView()
+            backImageView?.frame = self.view.frame
+            backImageView?.image = backImageData
+            self.view.insertSubview(backImageView!, at: 0)
+            //ブラー設定
+            // Blurエフェクトを適用するEffectViewを作成.
+            let effect = UIBlurEffect(style: UIBlurEffectStyle.light)
+            let effectView = UIVisualEffectView(effect: effect)
+            effectView.frame = self.view.frame
+            self.view.insertSubview(effectView, at: 1)
+        }
+    }
+    
+    func setTableVIew(){
+        tableView.frame = CGRect(x: 0, y: 60, width: self.view.frame.width, height: self.view.frame.height)
+        self.view.addSubview(tableView)
+        tableView.backgroundColor = UIColor.clear
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+        tableView.rowHeight = UITableViewAutomaticDimension
+    }
+    
+    //---------------------------------------------------------------------------------------------------------------------
+    //検索ボタン押下処理
+    //---------------------------------------------------------------------------------------------------------------------
+    func search(){
+        //画面遷移
+        //検索モードで画面表示
+        let entryVC = EntryViewBaseController<T>()
+        entryVC.targetObject = searchKey
+        entryVC.entryMode = .search
+        present(entryVC, animated: true, completion: nil)
+    }
+    //---------------------------------------------------------------------------------------------------------------------
+    //戻るボタン押下処理
+    //---------------------------------------------------------------------------------------------------------------------
+    func back(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -33,8 +107,9 @@ class ListViewBaseController<T: Object>: UIViewController,UITableViewDelegate,UI
         reloadTableView()
     }
     
-    @IBAction func back(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
     }
     
     @available(iOS 2.0, *)
@@ -42,18 +117,63 @@ class ListViewBaseController<T: Object>: UIViewController,UITableViewDelegate,UI
         return objects.count
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat{
+        let object = T()
+        return getCellHeight(object: object)
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let project = objects[indexPath.row]
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
-        cell.layer.cornerRadius = 10.0
+        let object = objects[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         
-        cellCreate(cell: cell)
+        let cellView = getCellView(object:object)
+        cell.backgroundColor = UIColor.clear
+        cell.addSubview(cellView)
         
         return cell
     }
     
-    func cellCreate(cell: UITableViewCell){
-        //継承先で記載
+    //セルの高さを取得する（Objectのサイズ）
+    func getCellHeight(object: T)-> CGFloat {
+        let objectMirror = Mirror(reflecting: object)
+        let itemHeight:CGFloat = 30.0
+        let count:CGFloat = CGFloat(objectMirror.children.count)
+        let cellHeight:CGFloat = (itemHeight + 5) * count
+        return cellHeight + 10
+    }
+    
+    func getCellView(object: T)-> UIView{
+        let cellView = UIView()
+        let objectMirror = Mirror(reflecting: object)
+        let x:CGFloat = 20.0
+        var y:CGFloat = 0.0
+        let height:CGFloat = 30.0
+        
+        for (name,_) in objectMirror.children {
+            guard let name = name else { continue }
+            
+            //children.valueでは値が取れなかった
+            //object.valueであれば取れた何故かは不明
+            var strValue = ""
+            if let value = object.value(forKey: name) {
+                strValue = Util.toStringObjectItem(value: value)
+            }
+
+            //ラベルを追加する
+            let label = UILabel()
+            label.frame = CGRect(x: x, y: y, width: self.view.frame.width - (x * 2), height: height)
+            label.text = name + "：" + strValue
+            
+            //
+            cellView.backgroundColor = UIColor.clear
+            
+            cellView.addSubview(label)
+            //テキストフィールドの間隔
+            y = y + height + 5
+        }
+        cellView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: getCellHeight(object: object))
+        
+        return cellView
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
@@ -72,35 +192,24 @@ class ListViewBaseController<T: Object>: UIViewController,UITableViewDelegate,UI
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let object = objects[indexPath.row]
         //画面遷移
-        performSegue(withIdentifier: entryIdentifier, sender: object)
+        //変更モードで画面表示
+        let entryVC = EntryViewBaseController<T>()
+        entryVC.targetObject = object
+        entryVC.entryMode = .update
+        present(entryVC, animated: true, completion: nil)
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        if segue.identifier == entryIdentifier{
-            let pjEntryVC = segue.destination as! PJEntryViewController
-            pjEntryVC.targetProjet = sender as? Project
-            pjEntryVC.entryMode = .update
-        }else if segue.identifier == seachIdntifier{
-            let pjEntryVC = segue.destination as! PJEntryViewController
-            //pjEntryVC.targetProjet = searchKey
-            pjEntryVC.entryMode = .seach
-        }
-    }
     
+    //テーブルのセクション数を返す
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
+    //リロード
     func reloadTableView(){
         let predicate = Util.CreatePredicate(object: searchKey)
         self.objects = DataAccess.select(predicate: predicate ,orderKey: orderKey)
         tableView.reloadData()
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
 }

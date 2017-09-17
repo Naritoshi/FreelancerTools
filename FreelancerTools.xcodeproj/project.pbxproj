@@ -21,6 +21,8 @@
 		140310C51F2DF04D00955A7E /* PJListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140310C41F2DF04D00955A7E /* PJListViewController.swift */; };
 		140310C71F2DF55C00955A7E /* pjent.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 140310C61F2DF55C00955A7E /* pjent.jpg */; };
 		140310C91F2E04A300955A7E /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140310C81F2E04A300955A7E /* Project.swift */; };
+		141123C71F6BF1700064796E /* EntryViewBaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141123C61F6BF16F0064796E /* EntryViewBaseController.swift */; };
+		141123C91F6BFC9D0064796E /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141123C81F6BFC9D0064796E /* MenuViewController.swift */; };
 		14438CCC1F617EF600568618 /* pjlistback.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 14438CCB1F617EF600568618 /* pjlistback.jpg */; };
 		146A1C321F6020B900DE1181 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146A1C311F6020B900DE1181 /* Util.swift */; };
 		146A1C341F60244F00DE1181 /* DataAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146A1C331F60244F00DE1181 /* DataAccess.swift */; };
@@ -70,6 +72,8 @@
 		140310C41F2DF04D00955A7E /* PJListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PJListViewController.swift; sourceTree = "<group>"; };
 		140310C61F2DF55C00955A7E /* pjent.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = pjent.jpg; sourceTree = "<group>"; };
 		140310C81F2E04A300955A7E /* Project.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
+		141123C61F6BF16F0064796E /* EntryViewBaseController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntryViewBaseController.swift; sourceTree = "<group>"; };
+		141123C81F6BFC9D0064796E /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		14438CCB1F617EF600568618 /* pjlistback.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = pjlistback.jpg; sourceTree = "<group>"; };
 		146A1C311F6020B900DE1181 /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		146A1C331F60244F00DE1181 /* DataAccess.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataAccess.swift; sourceTree = "<group>"; };
@@ -150,6 +154,8 @@
 				140310C21F2DF03A00955A7E /* PJEntryViewController.swift */,
 				140310C41F2DF04D00955A7E /* PJListViewController.swift */,
 				14C977951F6AC13A00884556 /* ListViewBaseController.swift */,
+				141123C61F6BF16F0064796E /* EntryViewBaseController.swift */,
+				141123C81F6BFC9D0064796E /* MenuViewController.swift */,
 				1403108E1F2DDB2F00955A7E /* Main.storyboard */,
 				140310931F2DDB2F00955A7E /* LaunchScreen.storyboard */,
 				140310961F2DDB2F00955A7E /* Info.plist */,
@@ -487,12 +493,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				141123C91F6BFC9D0064796E /* MenuViewController.swift in Sources */,
 				1403108D1F2DDB2F00955A7E /* ViewController.swift in Sources */,
 				146A1C321F6020B900DE1181 /* Util.swift in Sources */,
 				1403108B1F2DDB2F00955A7E /* AppDelegate.swift in Sources */,
 				140310C91F2E04A300955A7E /* Project.swift in Sources */,
 				140310C51F2DF04D00955A7E /* PJListViewController.swift in Sources */,
 				14C977961F6AC13A00884556 /* ListViewBaseController.swift in Sources */,
+				141123C71F6BF1700064796E /* EntryViewBaseController.swift in Sources */,
 				140310C31F2DF03A00955A7E /* PJEntryViewController.swift in Sources */,
 				146A1C341F60244F00DE1181 /* DataAccess.swift in Sources */,
 			);

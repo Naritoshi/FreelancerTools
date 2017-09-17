@@ -119,4 +119,30 @@ class Util{
     static func GetTableID() -> String{
         return NSUUID().uuidString
     }
+    
+    //文字列変換する
+    static func toStringObjectItem(value:Any)->String{
+        var retStr = String()
+        switch value {
+        case is String:
+            if let strValue = value as? String {
+                retStr = strValue
+            }
+            break
+        case is Int:
+            if let intValue = value as? Int {
+                retStr = String(intValue)
+            }
+            break
+        case is RealmOptional<Int>:
+            if let intValue = (value as? RealmOptional<Int>)?.value {
+                retStr = String(intValue)
+            }
+            break
+        default:
+            break
+        }
+        
+        return retStr
+    }
 }
