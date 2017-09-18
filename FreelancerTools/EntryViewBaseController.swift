@@ -8,6 +8,7 @@
 
 import UIKit
 import RealmSwift
+import Realm
 
 class EntryViewBaseController<T: Object>: UIViewController {
 
@@ -34,7 +35,6 @@ class EntryViewBaseController<T: Object>: UIViewController {
     var backButton: UIButton?
     var registorButton: UIButton?
     var textFields = [String: UITextField]()
-    
     //---------------------------------------------------------------------------------------------------------------------
     //ビューの表示
     //---------------------------------------------------------------------------------------------------------------------
@@ -99,38 +99,88 @@ class EntryViewBaseController<T: Object>: UIViewController {
         for (name, value) in objectMirror.children {
             guard let name = name else { continue }
             
-            //テキストフィールドを追加する
-            let textField = UITextField()
-            textField.frame = CGRect(x: x, y: y, width: self.view.frame.width - (x * 2), height: height)
-            textField.backgroundColor = UIColor.white
-            textField.borderStyle = .bezel
-            textField.placeholder = name
-            textField.text = Util.toStringObjectItem(value: value)
-            setTextFiledSettingByObjectType(textField: textField, value: value)
-            textFields[name] = textField
+            //スキップする条件
+            if skipTextFieldItem(value: value) == true { continue }
             
-            //nameがidの場合、無効化する
-            if name == "id" {
-                textField.backgroundColor = UIColor.lightGray
-                textField.isEnabled = false
-                if entryMode == .insert{
-                    textField.text = Util.GetTableID()
-                }
+            //
+            var uiCtrls:[UIControl] = [UIControl]()
+            
+            let frame = CGRect(x: x, y: y, width: self.view.frame.width - (x * 2), height: height)
+            
+            switch Util.getTypeString(value: value) {
+            case "String","Optional<String>", "Int", "RealmOptional<Int>":
+                uiCtrls.append(getDispTextField(name: name, value: value, frame: frame))
+            case "Optional<Company>":
+                uiCtrls.append(getDispTextField(name: name, value: value, frame: frame))
+                uiCtrls.append(getDispSearchButton(frame: frame))
+                break
+            default:
+                break
             }
             
-            self.view.addSubview(textField)
+            for uiCtrl in uiCtrls {
+                //画面に追加
+                self.view.addSubview(uiCtrl)
+            }
             
-            //テキストフィールドの間隔
-            y = y + 40
+            if (uiCtrls.count > 0) {
+                //テキストフィールドの間隔
+                y = y + 40
+            }
         }
     }
     
+    func skipTextFieldItem(value: Any) -> Bool {        
+        var isSkipItem = false
+        switch Util.getTypeString(value: value) {
+        case "String", "Optional<String>","Int", "RealmOptional<Int>", "Optional<Company>":
+            break
+        default:
+            isSkipItem = true
+        }
+        return isSkipItem
+    }
+    
+    func getDispTextField(name: String , value: Any, frame: CGRect) -> UIControl {
+        //テキストフィールドを追加する
+        let textField = UITextField()
+        textField.frame = frame
+        textField.backgroundColor = UIColor.white
+        textField.borderStyle = .bezel
+        textField.placeholder = name
+        textField.text = Util.toStringObjectItem(value: value)
+        setTextFiledSettingByObjectType(textField: textField, value: value)
+        
+        //nameがidの場合、無効化する
+        if name == "id" {
+            textField.backgroundColor = UIColor.lightGray
+            textField.isEnabled = false
+            if entryMode == .insert{
+                textField.text = Util.GetTableID()
+            }
+        }
+        
+        //配列に入れる
+        textFields[name] = textField
+    
+        return textField
+    }
+    
+    //検索用ボタンのコントロール
+    func getDispSearchButton(frame: CGRect) -> UIControl{
+        let button = UIButton()
+        button.frame = CGRect(x: self.view.frame.maxX - 100 - frame.minX, y: frame.minY, width: 100, height: frame.height)
+        button.setTitle("検索", for: .normal)
+        button.backgroundColor = UIColor.lightGray
+        return button
+    }
+    
     func setTextFiledSettingByObjectType(textField: UITextField,value: Any){
-        switch value {
-        case is String:
+        switch Util.getTypeString(value: value) {
+        case "String","Optional<String>":
             textField.textAlignment = .left
             break
-        case is Int, is RealmOptional<Int>:
+        case "Int", "RealmOptional<Int>":
             textField.textAlignment = .right
             textField.keyboardType = .numberPad
             break
@@ -176,16 +226,15 @@ class EntryViewBaseController<T: Object>: UIViewController {
     func insert(){
         let object = T()
         setDipsToObject(object: object)
-
         DataAccess.insert(insetObj: object)
     }
     
     //変更
     func update(){
-        guard let object = targetObject else {
+        guard let targetObj = targetObject else {
             return
         }
-
+        let object = T(value: targetObj, schema: RLMSchema.partialShared())
         setDipsToObject(object: object)
         DataAccess.update(updateObj: object)
     }
@@ -196,21 +245,23 @@ class EntryViewBaseController<T: Object>: UIViewController {
         
         for (name, value) in objectMirror.children {
             if let propertyName = name as String! {
-                if let nameField = textFields[propertyName]{
-                    
-                    switch value {
-                    case is String:
-                        if let textValue = nameField.text{
+                
+                //画面値をクラスに代入
+                //テキストフィールド
+                if let nameTextField = textFields[propertyName]{
+                    switch Util.getTypeString(value: value) {
+                    case "String", "Optional<String>":
+                        if let textValue = nameTextField.text{
                             object.setValue(textValue, forKey: propertyName)
                         }
                         break
-                    case is RealmOptional<Int>:
-                        if let textValue = nameField.text, let intValue = Int(textValue)  {
+                    case "RealmOptional<Int>":
+                        if let textValue = nameTextField.text, let intValue = Int(textValue)  {
                             object.setValue(RealmOptional<Int>(intValue), forKey: propertyName)
                         }
                         break
                     default:
-                        if let textValue = nameField.text{
+                        if let textValue = nameTextField.text{
                             object.setValue(textValue, forKey: propertyName)
                         }
                         break

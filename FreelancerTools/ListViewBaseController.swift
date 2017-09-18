@@ -15,10 +15,10 @@ class ListViewBaseController<T: Object>: UIViewController,UITableViewDelegate,UI
     var backImageView:UIImageView?
     var backImage: UIImage?
     
-    //
-    var cellIdentifier = "Cell"
-    var entryIdentifier = "projectEntry"
-    var seachIdntifier = "projectSeach"
+    //id
+    let cellIdentifier = "Cell"
+    let entryIdentifier = "projectEntry"
+    let seachIdntifier = "projectSeach"
     
     //検索結果
     var objects:Results<T>!
@@ -26,9 +26,7 @@ class ListViewBaseController<T: Object>: UIViewController,UITableViewDelegate,UI
     var searchKey:T = T()
     var orderKey = "id"
     
-    /*
-     ナビゲーションバー
-     */
+    /*　ナビゲーションバー */
     let entryTitle = "登録画面"
     let updateTitle = "変更画面"
     let searchTitle = "検索画面"
@@ -36,6 +34,10 @@ class ListViewBaseController<T: Object>: UIViewController,UITableViewDelegate,UI
     var navigationBar: UINavigationBar?
     var backButton: UIButton?
     var registorButton: UIButton?
+    
+    //テーブルビュー
+    let cellItemHeight:CGFloat = 30.0
+    let cellXMargin:CGFloat = 20.0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -80,7 +82,7 @@ class ListViewBaseController<T: Object>: UIViewController,UITableViewDelegate,UI
         tableView.backgroundColor = UIColor.clear
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellIdentifier)
         tableView.rowHeight = UITableViewAutomaticDimension
     }
     
@@ -136,21 +138,21 @@ class ListViewBaseController<T: Object>: UIViewController,UITableViewDelegate,UI
     //セルの高さを取得する（Objectのサイズ）
     func getCellHeight(object: T)-> CGFloat {
         let objectMirror = Mirror(reflecting: object)
-        let itemHeight:CGFloat = 30.0
         let count:CGFloat = CGFloat(objectMirror.children.count)
-        let cellHeight:CGFloat = (itemHeight + 5) * count
-        return cellHeight + 10
+        let cellHeight:CGFloat = (cellItemHeight) * count
+        return cellHeight
     }
     
     func getCellView(object: T)-> UIView{
         let cellView = UIView()
         let objectMirror = Mirror(reflecting: object)
-        let x:CGFloat = 20.0
+        let x:CGFloat = cellXMargin
         var y:CGFloat = 0.0
-        let height:CGFloat = 30.0
         
-        for (name,_) in objectMirror.children {
+        for (name, value) in objectMirror.children {
             guard let name = name else { continue }
+            
+            if skipTextFieldItem(value: value) { continue }
             
             //children.valueでは値が取れなかった
             //object.valueであれば取れた何故かは不明
@@ -161,19 +163,29 @@ class ListViewBaseController<T: Object>: UIViewController,UITableViewDelegate,UI
 
             //ラベルを追加する
             let label = UILabel()
-            label.frame = CGRect(x: x, y: y, width: self.view.frame.width - (x * 2), height: height)
+            label.frame = CGRect(x: x, y: y, width: self.view.frame.width - (x * 2), height: cellItemHeight)
             label.text = name + "：" + strValue
-            
-            //
-            cellView.backgroundColor = UIColor.clear
-            
             cellView.addSubview(label)
             //テキストフィールドの間隔
-            y = y + height + 5
+            y = y + cellItemHeight
         }
+        
+        //
+        cellView.backgroundColor = UIColor.clear
         cellView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: getCellHeight(object: object))
         
         return cellView
+    }
+    
+    func skipTextFieldItem(value: Any) -> Bool {
+        var isSkipItem = false
+        switch Util.getTypeString(value: value) {
+        case "String", "Optional<String>","Int", "RealmOptional<Int>", "Agent":
+            break
+        default:
+            isSkipItem = true
+        }
+        return isSkipItem
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {

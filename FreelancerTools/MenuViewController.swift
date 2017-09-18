@@ -21,6 +21,7 @@ class MenuViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    //案件
     @IBAction func Test(_ sender: Any) {
         let pjEntryVC = EntryViewBaseController<Project>()
         pjEntryVC.backImage = #imageLiteral(resourceName: "pjent.jpg")
@@ -32,5 +33,4 @@ class MenuViewController: UIViewController {
         pjListVC.backImage = #imageLiteral(resourceName: "back.jpg")
         present(pjListVC, animated: true, completion: nil)
     }
-    
 }

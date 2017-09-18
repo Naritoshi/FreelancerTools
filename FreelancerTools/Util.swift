@@ -11,47 +11,6 @@ import RealmSwift
 
 class Util{
     
-    //ID自動採番
-    static func CleateProjectInstans(nameText: String, pgLangText: String?, placeText: String?, priceText: String?
-        , lowerTimeText: String?, upperTimeText: String?, stateText:String?, noteText:String?) -> Project {
-
-        return CleateProjectInstans(id: GetTableID(), nameText: nameText, pgLangText: pgLangText, placeText: placeText, priceText: priceText, lowerTimeText: lowerTimeText, upperTimeText: upperTimeText, stateText: stateText, noteText: noteText)
-    }
-    static func CleateProjectInstans(id: String,nameText: String, pgLangText: String?, placeText: String?, priceText: String?
-        , lowerTimeText: String?, upperTimeText: String?, stateText:String?, noteText:String?) -> Project {
-        let name = nameText
-        let pgLang = pgLangText
-        let place = placeText
-        var price:Int? = nil
-        var lowerTime:Int? = nil
-        var upperTime:Int? = nil
-        let state = stateText
-        let note = noteText
-        
-        if let priceStr = priceText{
-            price = Int(priceStr)
-        }
-        if let lowerStr = lowerTimeText{
-            lowerTime = Int(lowerStr)
-        }
-        if let upperStr = upperTimeText {
-            upperTime = Int(upperStr)
-        }
-        
-        //オプジェクト生成
-        let project = Project()
-        project.id = id
-        project.name = name
-        project.pgLang = pgLang
-        project.place = place
-        project.price = RealmOptional<Int>(price)
-        project.lowerTime = RealmOptional<Int>(lowerTime)
-        project.upperTime = RealmOptional<Int>(upperTime)
-        project.state = state
-        project.note = note
-        return project
-    }
-    
     static func CreatePredicate<T: Object>(object: T) -> NSPredicate?{
         if let project = object as? Project {
             return CleateProjectPredicate(project: project)
@@ -124,25 +83,29 @@ class Util{
     static func toStringObjectItem(value:Any)->String{
         var retStr = String()
         switch value {
-        case is String:
-            if let strValue = value as? String {
-                retStr = strValue
-            }
-            break
-        case is Int:
-            if let intValue = value as? Int {
-                retStr = String(intValue)
-            }
-            break
+        case let strValue as String:
+            retStr = strValue
+        case let intValue as Int:
+            retStr = String(intValue)
         case is RealmOptional<Int>:
             if let intValue = (value as? RealmOptional<Int>)?.value {
                 retStr = String(intValue)
             }
-            break
+        case is Company, is Project, is Agent:
+            if let strValue = (value as? Object)?.value(forKey: "name") as? String {
+                retStr = strValue
+            }
         default:
             break
         }
         
         return retStr
+    }
+    
+    //型を文字列で取得する
+    static func getTypeString(value: Any)-> String {
+        let valueType = type(of: value)
+        let strValueType = String(describing: valueType)
+        return strValueType
     }
 }
