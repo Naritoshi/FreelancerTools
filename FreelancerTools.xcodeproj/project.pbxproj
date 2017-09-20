@@ -20,6 +20,7 @@
 		140310C91F2E04A300955A7E /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140310C81F2E04A300955A7E /* Project.swift */; };
 		141123C71F6BF1700064796E /* EntryViewBaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141123C61F6BF16F0064796E /* EntryViewBaseController.swift */; };
 		141123C91F6BFC9D0064796E /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141123C81F6BFC9D0064796E /* MenuViewController.swift */; };
+		1414C9101F714E1F000BD049 /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1414C90F1F714E1F000BD049 /* SearchTableViewController.swift */; };
 		14438CCC1F617EF600568618 /* pjlistback.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 14438CCB1F617EF600568618 /* pjlistback.jpg */; };
 		146A1C321F6020B900DE1181 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146A1C311F6020B900DE1181 /* Util.swift */; };
 		146A1C341F60244F00DE1181 /* DataAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146A1C331F60244F00DE1181 /* DataAccess.swift */; };
@@ -33,6 +34,7 @@
 		14ED5F471F6FEDFF00A9C24F /* SegmentMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14ED5F461F6FEDFF00A9C24F /* SegmentMenuViewController.swift */; };
 		14ED5F491F6FEF9200A9C24F /* mastarMenteBack.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 14ED5F481F6FEF9200A9C24F /* mastarMenteBack.jpg */; };
 		14ED5F4B1F6FF07800A9C24F /* MenteMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14ED5F4A1F6FF07800A9C24F /* MenteMenuViewController.swift */; };
+		14FF2E851F7287F400E44ACE /* SearchModalDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14FF2E841F7287F400E44ACE /* SearchModalDelegate.swift */; };
 		37A6BD2BEEC538EAC152AB1C /* Pods_FreelancerToolsUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E33A6A8CCD0DD36CB6DA9EF /* Pods_FreelancerToolsUITests.framework */; };
 		46C356F5618DB42A2EF7CBD9 /* Pods_FreelancerToolsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6ABC40127B8D4DB52A7B11D1 /* Pods_FreelancerToolsTests.framework */; };
 		EA72848BED2882FECEC0E21F /* Pods_FreelancerTools.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 137B96514D13C93927202B78 /* Pods_FreelancerTools.framework */; };
@@ -77,6 +79,7 @@
 		140310C81F2E04A300955A7E /* Project.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
 		141123C61F6BF16F0064796E /* EntryViewBaseController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntryViewBaseController.swift; sourceTree = "<group>"; };
 		141123C81F6BFC9D0064796E /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		1414C90F1F714E1F000BD049 /* SearchTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTableViewController.swift; sourceTree = "<group>"; };
 		14438CCB1F617EF600568618 /* pjlistback.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = pjlistback.jpg; sourceTree = "<group>"; };
 		146A1C311F6020B900DE1181 /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		146A1C331F60244F00DE1181 /* DataAccess.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataAccess.swift; sourceTree = "<group>"; };
@@ -90,6 +93,7 @@
 		14ED5F461F6FEDFF00A9C24F /* SegmentMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegmentMenuViewController.swift; sourceTree = "<group>"; };
 		14ED5F481F6FEF9200A9C24F /* mastarMenteBack.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = mastarMenteBack.jpg; sourceTree = "<group>"; };
 		14ED5F4A1F6FF07800A9C24F /* MenteMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenteMenuViewController.swift; sourceTree = "<group>"; };
+		14FF2E841F7287F400E44ACE /* SearchModalDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchModalDelegate.swift; sourceTree = "<group>"; };
 		17C7343BC3FF8BDAA53AF39D /* Pods-FreelancerTools.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FreelancerTools.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FreelancerTools/Pods-FreelancerTools.debug.xcconfig"; sourceTree = "<group>"; };
 		6ABC40127B8D4DB52A7B11D1 /* Pods_FreelancerToolsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FreelancerToolsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E33A6A8CCD0DD36CB6DA9EF /* Pods_FreelancerToolsUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FreelancerToolsUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -202,6 +206,8 @@
 				14ED5F4A1F6FF07800A9C24F /* MenteMenuViewController.swift */,
 				141123C61F6BF16F0064796E /* EntryViewBaseController.swift */,
 				14C977951F6AC13A00884556 /* ListViewBaseController.swift */,
+				1414C90F1F714E1F000BD049 /* SearchTableViewController.swift */,
+				14FF2E841F7287F400E44ACE /* SearchModalDelegate.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -563,8 +569,10 @@
 				14C977961F6AC13A00884556 /* ListViewBaseController.swift in Sources */,
 				14ED5F471F6FEDFF00A9C24F /* SegmentMenuViewController.swift in Sources */,
 				14E9B9361F6EAD5D0080230C /* Company.swift in Sources */,
+				1414C9101F714E1F000BD049 /* SearchTableViewController.swift in Sources */,
 				14ED5F4B1F6FF07800A9C24F /* MenteMenuViewController.swift in Sources */,
 				141123C71F6BF1700064796E /* EntryViewBaseController.swift in Sources */,
+				14FF2E851F7287F400E44ACE /* SearchModalDelegate.swift in Sources */,
 				14E9B9381F6EADF60080230C /* Agent.swift in Sources */,
 				146A1C341F60244F00DE1181 /* DataAccess.swift in Sources */,
 			);

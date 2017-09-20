@@ -10,7 +10,7 @@ import UIKit
 import RealmSwift
 import Realm
 
-class EntryViewBaseController<T: Object>: UIViewController {
+class EntryViewBaseController<T: Object>: UIViewController,SearchModalDelegate {
 
     enum mode:Int {
         case insert
@@ -112,7 +112,7 @@ class EntryViewBaseController<T: Object>: UIViewController {
                 uiCtrls.append(getDispTextField(name: name, value: value, frame: frame))
             case "Optional<Company>":
                 uiCtrls.append(getDispTextField(name: name, value: value, frame: frame))
-                uiCtrls.append(getDispSearchButton(frame: frame))
+                uiCtrls.append(getDispSearchButton(frame: frame, value: value))
                 break
             default:
                 break
@@ -167,11 +167,19 @@ class EntryViewBaseController<T: Object>: UIViewController {
     }
     
     //検索用ボタンのコントロール
-    func getDispSearchButton(frame: CGRect) -> UIControl{
+    func getDispSearchButton(frame: CGRect, value: Any) -> UIControl{
         let button = UIButton()
         button.frame = CGRect(x: self.view.frame.maxX - 100 - frame.minX, y: frame.minY, width: 100, height: frame.height)
         button.setTitle("検索", for: .normal)
         button.backgroundColor = UIColor.lightGray
+        
+        //ボタン押下時アクション
+        switch Util.getTypeString(value: value){
+            case "Company", "Optional<Company>":
+                button.addTarget(self, action: #selector(searchCompany), for: .touchUpInside)
+            default:
+                break
+        }
         return button
     }
     
@@ -189,6 +197,28 @@ class EntryViewBaseController<T: Object>: UIViewController {
         }
     }
     
+    //---------------------------------------------------------------------------------------------------------------------
+    //検索ボタン押下
+    //---------------------------------------------------------------------------------------------------------------------
+    func searchCompany(sender:Any) {
+        let sVC = SearchTableViewController<Company>()
+        sVC.delegate = self
+        present(sVC, animated: true, completion: nil)
+    }
+    //検索結果受け取りメソッド
+    var searchResults = [String: Object]()
+    func selectedObject(object: Object) {
+        switch Util.getTypeString(value: object) {
+        case "Company", "Optional<Company>":
+            if let textField = textFields["compay"] {
+                textField.text = object.value(forKey: "name") as? String
+                searchResults["compay"] = object
+            }
+            break
+        default:
+            break
+        }
+    }
     //---------------------------------------------------------------------------------------------------------------------
     //実行ボタン押下処理
     //---------------------------------------------------------------------------------------------------------------------
@@ -217,15 +247,12 @@ class EntryViewBaseController<T: Object>: UIViewController {
             listVc.searchKey = searchKey
         }
     }
-    //継承して記載する部分
-    func getSearchObject() -> T{
-        return T()
-    }
     
     //登録
     func insert(){
         let object = T()
         setDipsToObject(object: object)
+        setChildObject(object: object)
         DataAccess.insert(insetObj: object)
     }
     
@@ -236,7 +263,21 @@ class EntryViewBaseController<T: Object>: UIViewController {
         }
         let object = T(value: targetObj, schema: RLMSchema.partialShared())
         setDipsToObject(object: object)
+        setChildObject(object: object)
         DataAccess.update(updateObj: object)
+    }
+    
+    //検索結果を反映
+    func setChildObject(object: T){
+        for key in searchResults.keys{
+            switch searchResults[key] {
+            case let company as Company:
+                object.setValue(company, forKey: "compay")
+                break
+            default:
+                break
+            }
+        }
     }
     
     //画面値をセットする
@@ -306,3 +347,4 @@ class EntryViewBaseController<T: Object>: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 }
+

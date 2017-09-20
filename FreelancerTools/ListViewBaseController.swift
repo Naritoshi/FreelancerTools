@@ -15,7 +15,7 @@ class ListViewBaseController<T: Object>: UIViewController,UITableViewDelegate,UI
     var backImageView:UIImageView?
     var backImage: UIImage?
     
-    //id
+    //idの定数
     let cellIdentifier = "Cell"
     let entryIdentifier = "projectEntry"
     let seachIdntifier = "projectSeach"
@@ -107,11 +107,6 @@ class ListViewBaseController<T: Object>: UIViewController,UITableViewDelegate,UI
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         reloadTableView()
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     @available(iOS 2.0, *)
@@ -211,12 +206,6 @@ class ListViewBaseController<T: Object>: UIViewController,UITableViewDelegate,UI
         present(entryVC, animated: true, completion: nil)
     }
     
-    
-    //テーブルのセクション数を返す
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
     //リロード
     func reloadTableView(){
         let predicate = Util.CreatePredicate(object: searchKey)
@@ -224,4 +213,16 @@ class ListViewBaseController<T: Object>: UIViewController,UITableViewDelegate,UI
         tableView.reloadData()
     }
     
+    //---------------------------------------------------------------------------------------------------------------------
+    //以下、変わらない部分
+    //---------------------------------------------------------------------------------------------------------------------
+    //テーブルのセクション数を返す
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
 }
