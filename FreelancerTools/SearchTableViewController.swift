@@ -11,6 +11,11 @@ import RealmSwift
 
 class SearchTableViewController<T:Object>: ListViewBaseController<T> {
     var delegate: SearchModalDelegate?
+    
+    override func viewDidLoad() {
+        backImage = #imageLiteral(resourceName: "back")
+        super.viewDidLoad()
+    }
     //画面遷移
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let delegate = self.delegate {

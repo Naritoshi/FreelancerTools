@@ -39,7 +39,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="back.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="ktJ-4C-WTh">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="back" translatesAutoresizingMaskIntoConstraints="NO" id="ktJ-4C-WTh">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -53,7 +53,7 @@
                                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dHg-WY-3XC">
                                             <rect key="frame" x="52" y="96" width="100" height="100"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <state key="normal" title="案件登録" image="syodan.jpeg">
+                                            <state key="normal" title="案件登録" image="syodan">
                                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
                                             <connections>
@@ -81,7 +81,7 @@
                                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yjs-vx-zqh">
                                             <rect key="frame" x="222" y="96" width="100" height="100"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <state key="normal" title="案件一覧" image="pjlist.jpg"/>
+                                            <state key="normal" title="案件一覧" image="pjlist"/>
                                             <connections>
                                                 <action selector="moveProjcetList:" destination="7e2-1Q-gbU" eventType="touchUpInside" id="0O6-LC-lNk"/>
                                             </connections>
@@ -128,7 +128,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="mastarMenteBack.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="0ia-Un-oAP">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="mastarMenteBack" translatesAutoresizingMaskIntoConstraints="NO" id="0ia-Un-oAP">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -142,7 +142,7 @@
                                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hKP-dy-IZa">
                                             <rect key="frame" x="54" y="256" width="100" height="100"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <state key="normal" title="営業登録" image="argentEntry.jpg"/>
+                                            <state key="normal" title="営業登録" image="argentEntry"/>
                                             <connections>
                                                 <action selector="moveAgentEntry:" destination="Vog-Ou-CJo" eventType="touchUpInside" id="ogT-NR-VhP"/>
                                             </connections>
@@ -150,7 +150,7 @@
                                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="698-1l-yKc">
                                             <rect key="frame" x="221" y="256" width="100" height="100"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <state key="normal" title="Button" image="argentList.jpg"/>
+                                            <state key="normal" title="Button" image="argentList"/>
                                             <connections>
                                                 <action selector="moveAgentList:" destination="Vog-Ou-CJo" eventType="touchUpInside" id="Rt1-pX-EHo"/>
                                             </connections>
@@ -158,7 +158,7 @@
                                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gex-tK-c8R">
                                             <rect key="frame" x="57" y="100" width="100" height="100"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <state key="normal" title="会社登録" image="companyEntry.jpg"/>
+                                            <state key="normal" title="会社登録" image="companyEntry"/>
                                             <connections>
                                                 <action selector="moveCompanyEntry:" destination="Vog-Ou-CJo" eventType="touchUpInside" id="ofG-kM-Oum"/>
                                             </connections>
@@ -166,7 +166,7 @@
                                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jt6-ow-BaF">
                                             <rect key="frame" x="221" y="100" width="100" height="100"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <state key="normal" title="会社一覧" image="companyList.jpg"/>
+                                            <state key="normal" title="会社一覧" image="companyList"/>
                                             <connections>
                                                 <action selector="moveCompanyList:" destination="Vog-Ou-CJo" eventType="touchUpInside" id="B3a-Pk-RRx"/>
                                             </connections>
@@ -257,13 +257,13 @@
         </scene>
     </scenes>
     <resources>
-        <image name="argentEntry.jpg" width="737" height="480"/>
-        <image name="argentList.jpg" width="720" height="480"/>
-        <image name="back.jpg" width="1067" height="1600"/>
-        <image name="companyEntry.jpg" width="640" height="480"/>
-        <image name="companyList.jpg" width="720" height="480"/>
-        <image name="mastarMenteBack.jpg" width="320" height="480"/>
-        <image name="pjlist.jpg" width="1600" height="1066"/>
-        <image name="syodan.jpeg" width="457" height="340"/>
+        <image name="argentEntry" width="737" height="480"/>
+        <image name="argentList" width="720" height="480"/>
+        <image name="back" width="1067" height="1600"/>
+        <image name="companyEntry" width="640" height="480"/>
+        <image name="companyList" width="720" height="480"/>
+        <image name="mastarMenteBack" width="320" height="480"/>
+        <image name="pjlist" width="1600" height="1066"/>
+        <image name="syodan" width="457" height="340"/>
     </resources>
 </document>

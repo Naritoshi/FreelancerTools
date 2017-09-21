@@ -111,7 +111,9 @@ class EntryViewBaseController<T: Object>: UIViewController,SearchModalDelegate {
             case "String","Optional<String>", "Int", "RealmOptional<Int>":
                 uiCtrls.append(getDispTextField(name: name, value: value, frame: frame))
             case "Optional<Company>":
-                uiCtrls.append(getDispTextField(name: name, value: value, frame: frame))
+                let textFields = getDispTextField(name: name, value: value, frame: frame)
+                textFields.isEnabled = false
+                uiCtrls.append(textFields)
                 uiCtrls.append(getDispSearchButton(frame: frame, value: value))
                 break
             default:
@@ -132,12 +134,16 @@ class EntryViewBaseController<T: Object>: UIViewController,SearchModalDelegate {
     
     func skipTextFieldItem(value: Any) -> Bool {        
         var isSkipItem = false
-        switch Util.getTypeString(value: value) {
+        let type = Util.getTypeString(value: value)
+        switch type {
         case "String", "Optional<String>","Int", "RealmOptional<Int>", "Optional<Company>":
-            break
+            if entryMode == .search && type == "Optional<Company>"{
+                isSkipItem = true
+            }
         default:
             isSkipItem = true
         }
+        
         return isSkipItem
     }
     
@@ -154,7 +160,7 @@ class EntryViewBaseController<T: Object>: UIViewController,SearchModalDelegate {
         //nameがidの場合、無効化する
         if name == "id" {
             textField.backgroundColor = UIColor.lightGray
-            textField.isEnabled = false
+            textField.isHidden = true
             if entryMode == .insert{
                 textField.text = Util.GetTableID()
             }

@@ -33,7 +33,18 @@ class SegmentMenuViewController: UIViewController {
             }
             var menuDisplayMode: MenuDisplayMode {
                 return .segmentedControl
-                // return .Standard(widthMode: .Flexible, centerItem: true, scrollingMode: .PagingEnabled)
+            }
+            var height: CGFloat{
+                return 60
+            }
+            var selectedItemCenter: Bool{
+                return false
+            }
+            var menuPosition: MenuPosition{
+                return .bottom
+            }
+            var focusMode: MenuFocusMode{
+                return .none
             }
             var genre_names: [String] = []
         }
@@ -54,7 +65,6 @@ class SegmentMenuViewController: UIViewController {
                 viewController1.title = genre_names[1]
                 viewControllers.append(viewController2)
                 key += 1
-                
                 return .all(menuOptions: MenuOptions(genre_names:self.genre_names), pagingControllers: viewControllers)
             }
             var lazyLoadingPage: LazyLoadingPage {

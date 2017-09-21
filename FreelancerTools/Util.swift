@@ -13,14 +13,43 @@ class Util{
     
     static func CreatePredicate<T: Object>(object: T) -> NSPredicate?{
         if let project = object as? Project {
-            return CleateProjectPredicate(project: project)
+            return CreateProjectPredicate(project: project)
+        }
+        if let agent = object as? Agent {
+            return CreateAgentPredicate(agent: agent)
+        }
+        if let company = object as? Company {
+            return CreateCompanyPredicate(company: company)
         }
         
         let predicats = [NSPredicate]()
         return NSCompoundPredicate(andPredicateWithSubpredicates: predicats)
     }
-    
-    static func CleateProjectPredicate(project: Project) -> NSPredicate? {
+    static func CreateAgentPredicate(agent: Agent) -> NSPredicate? {
+        var predicats = [NSPredicate]()
+        //名前
+        if agent.name != "" {
+            let predicate = NSPredicate(format: "name = %@", agent.name)
+            predicats.append(predicate)
+        }
+        //メール
+        if let emailAdress = agent.emailAdress, emailAdress != "" {
+            let predicate = NSPredicate(format: "emailAdress = %@", emailAdress)
+            predicats.append(predicate)
+        }
+        return NSCompoundPredicate(andPredicateWithSubpredicates: predicats)
+    }
+    static func CreateCompanyPredicate(company: Company) -> NSPredicate? {
+        var predicats = [NSPredicate]()
+        //名前
+        if company.name != "" {
+            let predicate = NSPredicate(format: "name = %@", company.name)
+            predicats.append(predicate)
+        }
+        
+        return NSCompoundPredicate(andPredicateWithSubpredicates: predicats)
+    }
+    static func CreateProjectPredicate(project: Project) -> NSPredicate? {
         var predicats = [NSPredicate]()
         
         //名前

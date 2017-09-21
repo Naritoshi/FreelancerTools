@@ -93,6 +93,7 @@ class ListViewBaseController<T: Object>: UIViewController,UITableViewDelegate,UI
         //画面遷移
         //検索モードで画面表示
         let entryVC = EntryViewBaseController<T>()
+        entryVC.backImage = #imageLiteral(resourceName: "back")
         entryVC.targetObject = searchKey
         entryVC.entryMode = .search
         present(entryVC, animated: true, completion: nil)
@@ -203,6 +204,7 @@ class ListViewBaseController<T: Object>: UIViewController,UITableViewDelegate,UI
         let entryVC = EntryViewBaseController<T>()
         entryVC.targetObject = object
         entryVC.entryMode = .update
+        entryVC.backImage = #imageLiteral(resourceName: "pjent")
         present(entryVC, animated: true, completion: nil)
     }
     

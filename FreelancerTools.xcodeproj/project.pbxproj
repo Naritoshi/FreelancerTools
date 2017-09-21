@@ -13,26 +13,16 @@
 		140310951F2DDB2F00955A7E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 140310931F2DDB2F00955A7E /* LaunchScreen.storyboard */; };
 		140310A01F2DDB2F00955A7E /* FreelancerToolsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1403109F1F2DDB2F00955A7E /* FreelancerToolsTests.swift */; };
 		140310AB1F2DDB2F00955A7E /* FreelancerToolsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140310AA1F2DDB2F00955A7E /* FreelancerToolsUITests.swift */; };
-		140310B91F2DE54100955A7E /* syodan.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 140310B81F2DE54100955A7E /* syodan.jpeg */; };
-		140310BD1F2DE93600955A7E /* pjlist.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 140310BC1F2DE93600955A7E /* pjlist.jpg */; };
-		140310C11F2DEC8E00955A7E /* back.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 140310C01F2DEC8E00955A7E /* back.jpg */; };
-		140310C71F2DF55C00955A7E /* pjent.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 140310C61F2DF55C00955A7E /* pjent.jpg */; };
 		140310C91F2E04A300955A7E /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140310C81F2E04A300955A7E /* Project.swift */; };
 		141123C71F6BF1700064796E /* EntryViewBaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141123C61F6BF16F0064796E /* EntryViewBaseController.swift */; };
 		141123C91F6BFC9D0064796E /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141123C81F6BFC9D0064796E /* MenuViewController.swift */; };
 		1414C9101F714E1F000BD049 /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1414C90F1F714E1F000BD049 /* SearchTableViewController.swift */; };
-		14438CCC1F617EF600568618 /* pjlistback.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 14438CCB1F617EF600568618 /* pjlistback.jpg */; };
 		146A1C321F6020B900DE1181 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146A1C311F6020B900DE1181 /* Util.swift */; };
 		146A1C341F60244F00DE1181 /* DataAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146A1C331F60244F00DE1181 /* DataAccess.swift */; };
 		14C977961F6AC13A00884556 /* ListViewBaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C977951F6AC13A00884556 /* ListViewBaseController.swift */; };
 		14E9B9361F6EAD5D0080230C /* Company.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E9B9351F6EAD5D0080230C /* Company.swift */; };
 		14E9B9381F6EADF60080230C /* Agent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E9B9371F6EADF60080230C /* Agent.swift */; };
-		14E9B93C1F6EBA610080230C /* argentEntry.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 14E9B9391F6EBA610080230C /* argentEntry.jpg */; };
-		14E9B93D1F6EBA610080230C /* companyList.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 14E9B93A1F6EBA610080230C /* companyList.jpg */; };
-		14E9B93E1F6EBA610080230C /* companyEntry.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 14E9B93B1F6EBA610080230C /* companyEntry.jpg */; };
-		14E9B9401F6EBD3B0080230C /* argentList.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 14E9B93F1F6EBD3B0080230C /* argentList.jpg */; };
 		14ED5F471F6FEDFF00A9C24F /* SegmentMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14ED5F461F6FEDFF00A9C24F /* SegmentMenuViewController.swift */; };
-		14ED5F491F6FEF9200A9C24F /* mastarMenteBack.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 14ED5F481F6FEF9200A9C24F /* mastarMenteBack.jpg */; };
 		14ED5F4B1F6FF07800A9C24F /* MenteMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14ED5F4A1F6FF07800A9C24F /* MenteMenuViewController.swift */; };
 		14FF2E851F7287F400E44ACE /* SearchModalDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14FF2E841F7287F400E44ACE /* SearchModalDelegate.swift */; };
 		37A6BD2BEEC538EAC152AB1C /* Pods_FreelancerToolsUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E33A6A8CCD0DD36CB6DA9EF /* Pods_FreelancerToolsUITests.framework */; };
@@ -72,26 +62,16 @@
 		140310A61F2DDB2F00955A7E /* FreelancerToolsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FreelancerToolsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		140310AA1F2DDB2F00955A7E /* FreelancerToolsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreelancerToolsUITests.swift; sourceTree = "<group>"; };
 		140310AC1F2DDB2F00955A7E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		140310B81F2DE54100955A7E /* syodan.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = syodan.jpeg; sourceTree = "<group>"; };
-		140310BC1F2DE93600955A7E /* pjlist.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = pjlist.jpg; sourceTree = "<group>"; };
-		140310C01F2DEC8E00955A7E /* back.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = back.jpg; sourceTree = "<group>"; };
-		140310C61F2DF55C00955A7E /* pjent.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = pjent.jpg; sourceTree = "<group>"; };
 		140310C81F2E04A300955A7E /* Project.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
 		141123C61F6BF16F0064796E /* EntryViewBaseController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntryViewBaseController.swift; sourceTree = "<group>"; };
 		141123C81F6BFC9D0064796E /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		1414C90F1F714E1F000BD049 /* SearchTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTableViewController.swift; sourceTree = "<group>"; };
-		14438CCB1F617EF600568618 /* pjlistback.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = pjlistback.jpg; sourceTree = "<group>"; };
 		146A1C311F6020B900DE1181 /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		146A1C331F60244F00DE1181 /* DataAccess.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataAccess.swift; sourceTree = "<group>"; };
 		14C977951F6AC13A00884556 /* ListViewBaseController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewBaseController.swift; sourceTree = "<group>"; };
 		14E9B9351F6EAD5D0080230C /* Company.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Company.swift; sourceTree = "<group>"; };
 		14E9B9371F6EADF60080230C /* Agent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Agent.swift; sourceTree = "<group>"; };
-		14E9B9391F6EBA610080230C /* argentEntry.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = argentEntry.jpg; sourceTree = "<group>"; };
-		14E9B93A1F6EBA610080230C /* companyList.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = companyList.jpg; sourceTree = "<group>"; };
-		14E9B93B1F6EBA610080230C /* companyEntry.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = companyEntry.jpg; sourceTree = "<group>"; };
-		14E9B93F1F6EBD3B0080230C /* argentList.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = argentList.jpg; sourceTree = "<group>"; };
 		14ED5F461F6FEDFF00A9C24F /* SegmentMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegmentMenuViewController.swift; sourceTree = "<group>"; };
-		14ED5F481F6FEF9200A9C24F /* mastarMenteBack.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = mastarMenteBack.jpg; sourceTree = "<group>"; };
 		14ED5F4A1F6FF07800A9C24F /* MenteMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenteMenuViewController.swift; sourceTree = "<group>"; };
 		14FF2E841F7287F400E44ACE /* SearchModalDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchModalDelegate.swift; sourceTree = "<group>"; };
 		17C7343BC3FF8BDAA53AF39D /* Pods-FreelancerTools.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FreelancerTools.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FreelancerTools/Pods-FreelancerTools.debug.xcconfig"; sourceTree = "<group>"; };
@@ -157,16 +137,6 @@
 			isa = PBXGroup;
 			children = (
 				140310911F2DDB2F00955A7E /* Assets.xcassets */,
-				140310B81F2DE54100955A7E /* syodan.jpeg */,
-				140310BC1F2DE93600955A7E /* pjlist.jpg */,
-				140310C01F2DEC8E00955A7E /* back.jpg */,
-				140310C61F2DF55C00955A7E /* pjent.jpg */,
-				14438CCB1F617EF600568618 /* pjlistback.jpg */,
-				14E9B9391F6EBA610080230C /* argentEntry.jpg */,
-				14E9B93F1F6EBD3B0080230C /* argentList.jpg */,
-				14E9B93A1F6EBA610080230C /* companyList.jpg */,
-				14E9B93B1F6EBA610080230C /* companyEntry.jpg */,
-				14ED5F481F6FEF9200A9C24F /* mastarMenteBack.jpg */,
 				1403108A1F2DDB2F00955A7E /* AppDelegate.swift */,
 				1403108E1F2DDB2F00955A7E /* Main.storyboard */,
 				140310931F2DDB2F00955A7E /* LaunchScreen.storyboard */,
@@ -388,18 +358,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				140310951F2DDB2F00955A7E /* LaunchScreen.storyboard in Resources */,
-				140310B91F2DE54100955A7E /* syodan.jpeg in Resources */,
-				14E9B93D1F6EBA610080230C /* companyList.jpg in Resources */,
-				14E9B93C1F6EBA610080230C /* argentEntry.jpg in Resources */,
-				14ED5F491F6FEF9200A9C24F /* mastarMenteBack.jpg in Resources */,
 				140310921F2DDB2F00955A7E /* Assets.xcassets in Resources */,
-				140310BD1F2DE93600955A7E /* pjlist.jpg in Resources */,
-				14E9B9401F6EBD3B0080230C /* argentList.jpg in Resources */,
-				14438CCC1F617EF600568618 /* pjlistback.jpg in Resources */,
-				140310C11F2DEC8E00955A7E /* back.jpg in Resources */,
-				140310C71F2DF55C00955A7E /* pjent.jpg in Resources */,
 				140310901F2DDB2F00955A7E /* Main.storyboard in Resources */,
-				14E9B93E1F6EBA610080230C /* companyEntry.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
